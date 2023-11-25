@@ -12,13 +12,16 @@ public class Hippo {
     String location;
     int startNeckSpeed = 15;
     int neckMoveDistance = 100;
+    String hippoName;
+    Color bodyColor;
 
     /*
      * Constructor
      */
-    public Hippo(String location) {
+    public Hippo(String location, Color bodyColor, String hippoName) {
         this.location = location;
-        
+        this.hippoName = hippoName;
+        this.bodyColor = bodyColor;
         setupPosition();
     }
     
@@ -26,8 +29,7 @@ public class Hippo {
         /*
          * Local variables
          */
-        Color bodyColor = Color.GRAY;
-        String hippoName = "Hippie Hippo";
+       
         
         drawScore(g, hippoName);
         

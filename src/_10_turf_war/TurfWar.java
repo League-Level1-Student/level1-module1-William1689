@@ -21,7 +21,22 @@ public class TurfWar extends PApplet {
         int downKey;
         int rightKey;
 
-        /*
+        
+        public Player(int x, int y, int speed, int playerSize, int playerColor, int upKey, int leftKey, int downKey,
+				int rightKey) {
+			
+			this.x = x;
+			this.y = y;
+			this.speed = speed;
+			this.playerSize = playerSize;
+			this.playerColor = playerColor;
+			this.upKey = upKey;
+			this.leftKey = leftKey;
+			this.downKey = downKey;
+			this.rightKey = rightKey;
+		}
+
+		/*
          * The member variables below do not need to be initialized in the
          * constructor.
          */
@@ -36,7 +51,8 @@ public class TurfWar extends PApplet {
              * 2. Draw a rectangle to represent the the Player using its color,
              * coordinates and size.
              */
-            
+            fill(playerColor);
+        	rect(x,y,playerSize,playerSize);
         }
 
         void update() {
@@ -58,7 +74,7 @@ public class TurfWar extends PApplet {
              * Note: You do not need to use the statsBoardLine for the 
              * other directions.
              */
-            
+           
         }
 
         // You do not need to change any other Player methods.
@@ -108,7 +124,8 @@ public class TurfWar extends PApplet {
      * 4. Declare two variables of the Player class called player1 and player2.
      * Do not initialize them yet.
      */
-
+    Player P1 = new Player();
+    Player P2 = new Player();
     
 
     // Do not change these variables
@@ -129,7 +146,7 @@ public class TurfWar extends PApplet {
     @Override
     public void settings() {
         // 5. Set the size for your sketch. Make it at least 300x300.
-       
+       size(600,600);
     }
 
     @Override
@@ -141,10 +158,10 @@ public class TurfWar extends PApplet {
         ((java.awt.Canvas) surface.getNative()).requestFocus();
 
         // 6. Set the background color.
-
+        background(160,159,78);
 
         // 7. Call the noStroke Method.
-        
+        noStroke();
         
         /*
          * 8. Initialize the two Player objects. For one use UP, LEFT, DOWN,

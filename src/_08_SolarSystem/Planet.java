@@ -14,11 +14,15 @@ public class Planet {
     Color color ;
     int distanceFromTheSun ;
     int orbitalPeriod ;
-    public Planet(int diameterPixels, Color color, int distanceFromTheSun, int orbitalPeriod) {
+    int numOfMoons;
+    public Planet(int diameterPixels, Color color, int distanceFromTheSun, int orbitalPeriod, int numOfMoons) {
         this.diameter = diameterPixels;
         this.color = color;
         this.distanceFromTheSun = distanceFromTheSun;
         this.orbitalPeriod = orbitalPeriod;
+        for(int i = 0; i<numOfMoons;i++) {
+        	addMoon();
+        }
     }
 
     public void draw(Graphics g, int numDays) {
