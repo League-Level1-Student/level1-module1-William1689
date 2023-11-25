@@ -124,7 +124,7 @@ public class TurfWar extends PApplet {
      * 4. Declare two variables of the Player class called player1 and player2.
      * Do not initialize them yet.
      */
-    Player P1 = new Player();
+    Player P1 = new Player(300,300,50,255,);
     Player P2 = new Player();
     
 
