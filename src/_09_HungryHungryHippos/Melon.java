@@ -21,7 +21,7 @@ public class Melon {
         this.x = x - RADIUS;
         this.y = y - RADIUS;
         
-        speed = new Random().nextInt(10) + 5;
+        speed = new Random().nextInt(30) + 10;
         angle = Math.toRadians(new Random().nextDouble() * 360);
         xSpeed = Math.sin(angle) * speed;
         ySpeed = -Math.cos(angle) * speed;
@@ -63,7 +63,7 @@ public class Melon {
              * 5 deg of random spin angle to melons don't bounce back and forth
              * along the same line
              */
-            double randomSpin = Math.toRadians((new Random().nextDouble() * 10) - 5);
+            double randomSpin = Math.toRadians((new Random().nextDouble() * 50) - 5);
             double tangent = Math.atan2(distY, distX);
             this.angle = (2 * tangent) - this.angle;
             

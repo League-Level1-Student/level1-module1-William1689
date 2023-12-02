@@ -67,7 +67,7 @@ public class TurfWar extends PApplet {
             if (moveUp && y > statsBoardLine) {
                 y-=speed;
             }
-            
+           
             /* 
              * 3. Make the Player move in every other direction.
              * 
@@ -124,8 +124,8 @@ public class TurfWar extends PApplet {
      * 4. Declare two variables of the Player class called player1 and player2.
      * Do not initialize them yet.
      */
-    Player P1 = new Player(300,300,50,255,);
-    Player P2 = new Player();
+   Player player1 ;
+    Player player2 ;
     
 
     // Do not change these variables
@@ -175,8 +175,8 @@ public class TurfWar extends PApplet {
          * not select black, white or the color you used for your background as it
          * will give that player an unfair advantage.
          */
-
-        
+        player1 = new Player(300,300,30,40,0,87,83,65,68);
+        player2 = new Player(400,400,30,40,0,38,40,37,39);
     }
 
     /*
@@ -184,85 +184,86 @@ public class TurfWar extends PApplet {
      * and player 2
      */
 
-//    public void isGameOver() {
-//        if (millis() >= endOfGame && !gameOver) {
-//            gameOver = true;
-//        }
-//    }
-//
-//    public void endGame() {
-//        
-//        String winMessage = "";
-//        
-//        double player1Percentage = calculateRoundedPixelPercentage(player1.pixelCount);
-//        double player2Percentage = calculateRoundedPixelPercentage(player2.pixelCount);
-//        
-//        
-//        if (player1Percentage == player2Percentage) {
-//            winMessage = "TIE";
-//
-//        } else if (player1Percentage > player2Percentage) {
-//            
-//            winMessage = "PLAYER 1 WINS!";
-//            
-//        } else {
-//            winMessage = "PLAYER 2 WINS!";
-//        }
-//        
-//        text(winMessage, (width/2 - (winMessage.length()*statsBoardSpacing) / 4)  , statsBoardSpacing*4);
-//        
-//        noLoop();
-//    }
-//    
-//    public void displayStats() {
-//        
-//        fill(Color.BLACK.getRGB());
-//        rect(0,0, width, 100);
-//        fill(Color.WHITE.getRGB());
-//        textSize(24);
-//        
-//        int gameTimeLeft = (endOfGame / 1000) - (int)(millis() / 1000);
-//        String timerDisplay = "Seconds Left: " + gameTimeLeft;
-//        text(timerDisplay, (width/2 - (timerDisplay.length()*statsBoardSpacing) / 4)  , statsBoardSpacing);
-//        
-//        loadPixels();
-//        player1.countPixels();
-//        player2.countPixels();
-//        
-//        String player1Display = "Player 1 Coverage: " + calculateRoundedPixelPercentage(player1.pixelCount) + "%";
-//        text(player1Display, (width/2 - (player1Display.length()*statsBoardSpacing) / 4)  , statsBoardSpacing*2);
-//        
-//        String player2Display = "Player 2 Coverage: " + calculateRoundedPixelPercentage(player2.pixelCount) + "%";
-//        text(player2Display, (width/2 - (player2Display.length()*statsBoardSpacing) / 4)  , statsBoardSpacing*3);
-//    }
-//    
-//    public double calculateRoundedPixelPercentage(int pixelCount) {
-//        double pixelPercentage = (pixelCount / (double) (width * height - width * statsBoardLine )) * 100;
-//        double pixelsRounded = Math.round(pixelPercentage * 100) / 100.0;
-//        return pixelsRounded;
-//    }
+    public void isGameOver() {
+       if (millis() >= endOfGame && !gameOver) {
+           gameOver = true;
+       }
+   }
+    
+   public void endGame() {
+       
+        String winMessage = "";
+        
+        double player1Percentage = calculateRoundedPixelPercentage(player1.pixelCount);
+        double player2Percentage = calculateRoundedPixelPercentage(player2.pixelCount);
+        
+        
+        if (player1Percentage == player2Percentage) {
+            winMessage = "TIE";
+
+        } else if (player1Percentage > player2Percentage) {
+        	
+        
+            winMessage = "PLAYER 1 WINS!";
+         
+        } else {
+            winMessage = "PLAYER 2 WINS!";
+        }
+        
+        text(winMessage, (width/2 - (winMessage.length()*statsBoardSpacing) / 4)  , statsBoardSpacing*4);
+        
+        noLoop();
+    }
+    
+    public void displayStats() {
+        
+        fill(Color.BLACK.getRGB());
+        rect(0,0, width, 100);
+        fill(Color.WHITE.getRGB());
+        textSize(24);
+        
+        int gameTimeLeft = (endOfGame / 1000) - (int)(millis() / 1000);
+        String timerDisplay = "Seconds Left: " + gameTimeLeft;
+        text(timerDisplay, (width/2 - (timerDisplay.length()*statsBoardSpacing) / 4)  , statsBoardSpacing);
+        
+        loadPixels();
+                player1.countPixels();
+        player2.countPixels();
+        
+        String player1Display = "Player 1 Coverage: " + calculateRoundedPixelPercentage(player1.pixelCount) + "%";
+        text(player1Display, (width/2 - (player1Display.length()*statsBoardSpacing) / 4)  , statsBoardSpacing*2);
+        
+        String player2Display = "Player 2 Coverage: " + calculateRoundedPixelPercentage(player2.pixelCount) + "%";
+        text(player2Display, (width/2 - (player2Display.length()*statsBoardSpacing) / 4)  , statsBoardSpacing*3);
+    }
+    
+    public double calculateRoundedPixelPercentage(int pixelCount) {
+        double pixelPercentage = (pixelCount / (double) (width * height - width * statsBoardLine )) * 100;
+        double pixelsRounded = Math.round(pixelPercentage * 100) / 100.0;
+        return pixelsRounded;    }
 
     @Override
     public void draw() {
         // 10. Call the drawPlayer method for both players.
-        
+        player1.drawPlayer();
         // 11. Call the update method for both players.
-
+        player2.drawPlayer();
         // 12. Call the isGameOver method.
-        
+       isGameOver();
         // 13. Call the displayStats method.
-
+       displayStats();
         // 14. If gameOver is true call the endGame method.
-
+     if(gameOver) {
+    	 endGame();
+     }
     }
-
     @Override
     public void keyPressed() {
         /*
          * 15. Call the enableMovement method for both players and pass keyCode
          * to the method.
          */        
-
+    	System.out.println(keyCode);
     }
 
     @Override

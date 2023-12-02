@@ -47,7 +47,8 @@ public class HungryHungryHippos implements GameScene, GameControlScene {
     static final int GAME_BOARD_WIDTH = (2 * GAME_WIDTH) / 3;
     static final int GAME_BOARD_X = -10 +(GAME_WIDTH - GAME_BOARD_WIDTH) / 2;
     static final int GAME_BOARD_Y = 5 + GAME_BOARD_X;
-    static final int NUM_MELONS = 150;
+    static final int NUM_MELONS = 15000;
+    	
 
     /*
      * Member variables
@@ -61,7 +62,7 @@ public class HungryHungryHippos implements GameScene, GameControlScene {
      * Create your hippo objects here. The "left" input parameter indicates
      * which side the hippo is drawn.
      */
-    Hippo myHippoObject = new Hippo("left",Color.PINK,"Lizzie Hippo");
+    Hippo Lizzie = new Hippo("left",Color.PINK,"Lizzie Hippo");
     Hippo Homer = new Hippo("right",Color.green,"Homer Hippo");
     Hippo Henry = new Hippo("up",Color.orange,"Henry Hippo");
     Hippo Harry = new Hippo("down",Color.YELLOW,"Harry Hippo");
@@ -101,7 +102,7 @@ public class HungryHungryHippos implements GameScene, GameControlScene {
         /*
          * Draw all the hippos here
          */
-        myHippoObject.draw(g);
+        Lizzie.draw(g);
         Homer.draw(g);
         Henry.draw(g);
         Harry.draw(g);
@@ -114,10 +115,10 @@ public class HungryHungryHippos implements GameScene, GameControlScene {
             
             /*
              * Check if a hippo is eating a melon by calling the
-             * checkHippoEating(myHippoObject) method. Make sure to do
+             * checkHippoEating(Lizzie) method. Make sure to do
              * this for all of your hippos!
              */
-            checkHippoEating(myHippoObject);
+            checkHippoEating(Lizzie);
             checkHippoEating(Homer);
            checkHippoEating(Henry);
            checkHippoEating(Harry);
@@ -128,19 +129,78 @@ public class HungryHungryHippos implements GameScene, GameControlScene {
     public void keyPressed(KeyEvent event) {
         int keyCode = event.getKeyCode();
 
+        int random = new Random().nextInt(4);
+        
         /*
          * Bind a key to make your hippos eat
          */
         if (keyCode == KeyEvent.VK_S) {
             startGame = true;
         } else if (keyCode == KeyEvent.VK_1) {
-            myHippoObject.eat();
+        	
+        	switch(random){
+        	case 1:
+        		Lizzie.eat();
+        		break;
+        	case 2:
+        		Homer.eat();
+        		break;
+        	case 3:
+        		Henry.eat();
+        		break;
+        	case 4: 
+        		Harry.eat();
+        		break;
+        	}
+        	
+        	
+            Lizzie.eat();
         } else if (keyCode == KeyEvent.VK_2) {
-            Homer.eat();
+            
+        	switch(random){
+        	case 1:
+        		Lizzie.eat();
+        		break;
+        	case 2:
+        		Homer.eat();
+        		break;
+        	case 3:
+        		Henry.eat();
+        		break;
+        	case 4: 
+        		Harry.eat();
+        		break;
+        	}
         } else if (keyCode == KeyEvent.VK_3) {
-            Henry.eat();
+        	switch(random){
+        	case 1:
+        		Lizzie.eat();
+        		break;
+        	case 2:
+        		Homer.eat();
+        		break;
+        	case 3:
+        		Henry.eat();
+        		break;
+        	case 4: 
+        		Harry.eat();
+        		break;
+        	}
         } else if (keyCode == KeyEvent.VK_4) {
-            Harry.eat();
+        	switch(random){
+        	case 1:
+        		Lizzie.eat();
+        		break;
+        	case 2:
+        		Homer.eat();
+        		break;
+        	case 3:
+        		Henry.eat();
+        		break;
+        	case 4: 
+        		Harry.eat();
+        		break;
+        	}
         }
     }
     
