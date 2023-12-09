@@ -21,7 +21,7 @@ public class Melon {
         this.x = x - RADIUS;
         this.y = y - RADIUS;
         
-        speed = new Random().nextInt(30) + 10;
+        speed = new Random().nextInt(5) + 10;
         angle = Math.toRadians(new Random().nextDouble() * 360);
         xSpeed = Math.sin(angle) * speed;
         ySpeed = -Math.cos(angle) * speed;

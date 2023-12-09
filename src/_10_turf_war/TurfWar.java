@@ -67,7 +67,15 @@ public class TurfWar extends PApplet {
             if (moveUp && y > statsBoardLine) {
                 y-=speed;
             }
-           
+            else if(moveLeft && x > 0) {
+            	x-=speed;
+            }
+            else if(moveRight && x<width-40) {
+            	x+=speed;
+            }
+            else if(moveDown && y<height-40) {
+            	y+=speed;
+            }
             /* 
              * 3. Make the Player move in every other direction.
              * 
@@ -112,6 +120,7 @@ public class TurfWar extends PApplet {
             pixelCount = 0;
             
             for (int i = 0; i < width * height; i++) {
+            	//System.out.println(pixels[i]);
                 if (pixels[i] == playerColor) {
                     pixelCount++;
                 }
@@ -175,8 +184,8 @@ public class TurfWar extends PApplet {
          * not select black, white or the color you used for your background as it
          * will give that player an unfair advantage.
          */
-        player1 = new Player(300,300,30,40,0,87,83,65,68);
-        player2 = new Player(400,400,30,40,0,38,40,37,39);
+        player1 = new Player(300,300,10,40,Color.red.getRGB(),W,A,S,D);
+        player2 = new Player(400,400,10,40,Color.blue.getRGB(),38,37,40,39);
     }
 
     /*
@@ -248,6 +257,8 @@ public class TurfWar extends PApplet {
         player1.drawPlayer();
         // 11. Call the update method for both players.
         player2.drawPlayer();
+        player1.update();
+        player2.update();
         // 12. Call the isGameOver method.
        isGameOver();
         // 13. Call the displayStats method.
@@ -264,6 +275,8 @@ public class TurfWar extends PApplet {
          * to the method.
          */        
     	System.out.println(keyCode);
+    	player1.enableMovement(keyCode);
+    	player2.enableMovement(keyCode);
     }
 
     @Override
@@ -272,8 +285,11 @@ public class TurfWar extends PApplet {
          * 16. Call the disableMovement method for both players and pass keyCode
          * to the method.
          */
-
+    	player1.disableMovement(keyCode);
+    	player2.disableMovement(keyCode);
+   
     }
+    
 
     /*
      * 17. Try to play a game of Turf War with someone nearby if possible. The

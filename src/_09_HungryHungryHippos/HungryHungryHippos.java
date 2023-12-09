@@ -46,7 +46,7 @@ public class HungryHungryHippos implements GameScene, GameControlScene {
     static final int GAME_HEIGHT = 800;
     static final int GAME_BOARD_WIDTH = (2 * GAME_WIDTH) / 3;
     static final int GAME_BOARD_X = -10 +(GAME_WIDTH - GAME_BOARD_WIDTH) / 2;
-    static final int GAME_BOARD_Y = 5 + GAME_BOARD_X;
+    static final int GAME_BOARD_Y = 10 + GAME_BOARD_X;
     static final int NUM_MELONS = 15000;
     	
 
@@ -137,72 +137,24 @@ public class HungryHungryHippos implements GameScene, GameControlScene {
         if (keyCode == KeyEvent.VK_S) {
             startGame = true;
         } else if (keyCode == KeyEvent.VK_1) {
+        	Lizzie.eat();
         	
-        	switch(random){
-        	case 1:
-        		Lizzie.eat();
-        		break;
-        	case 2:
-        		Homer.eat();
-        		break;
-        	case 3:
-        		Henry.eat();
-        		break;
-        	case 4: 
-        		Harry.eat();
-        		break;
         	}
         	
         	
-            Lizzie.eat();
-        } else if (keyCode == KeyEvent.VK_2) {
-            
-        	switch(random){
-        	case 1:
-        		Lizzie.eat();
-        		break;
-        	case 2:
-        		Homer.eat();
-        		break;
-        	case 3:
-        		Henry.eat();
-        		break;
-        	case 4: 
-        		Harry.eat();
-        		break;
+           
+        else if (keyCode == KeyEvent.VK_2) {
+            Homer.eat();
+        	
         	}
-        } else if (keyCode == KeyEvent.VK_3) {
-        	switch(random){
-        	case 1:
-        		Lizzie.eat();
-        		break;
-        	case 2:
-        		Homer.eat();
-        		break;
-        	case 3:
-        		Henry.eat();
-        		break;
-        	case 4: 
-        		Harry.eat();
-        		break;
+         else if (keyCode == KeyEvent.VK_3) {
+        	Henry.eat();
         	}
-        } else if (keyCode == KeyEvent.VK_4) {
-        	switch(random){
-        	case 1:
-        		Lizzie.eat();
-        		break;
-        	case 2:
-        		Homer.eat();
-        		break;
-        	case 3:
-        		Henry.eat();
-        		break;
-        	case 4: 
-        		Harry.eat();
-        		break;
+         else if (keyCode == KeyEvent.VK_4) {
+        	Harry.eat();
         	}
         }
-    }
+    
     
     
     
